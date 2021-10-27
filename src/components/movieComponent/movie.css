@@ -1,0 +1,22 @@
+.movie{
+    width: 150px;
+    margin-left: 20px;
+}
+.content{
+    position: relative;
+    padding: 26px 10px 12px 10px;
+}
+.content h2{
+    font-size: 1em;
+    width: 100%;
+}
+.content p {
+    font-size: 1em;
+    color: #000;
+    opacity: 0.6;
+}
+.score{
+    position: absolute;
+    left: 10px;
+    top: -20px;
+}
