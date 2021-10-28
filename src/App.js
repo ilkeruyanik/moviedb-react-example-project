@@ -5,7 +5,7 @@ function App() {
 
   const popular_movies_menu_items = [{
     name: 'Yayın Akışı',
-    type: 'all'
+    type: 'now_playing'
   },
   {
     name: 'Televizyonda',
@@ -31,7 +31,9 @@ function App() {
       <div className='movie-list-container'>
         <MovieList menu_items={popular_movies_menu_items} name='Popüler Olanlar'/>
       </div>
-      <MovieList menu_items={trends_movies_menu_item} name='Trend'/>
+      <div className='movie-list-container'>
+        <MovieList menu_items={trends_movies_menu_item} name='Trend'/>
+      </div>
     </div>
   );
 }
