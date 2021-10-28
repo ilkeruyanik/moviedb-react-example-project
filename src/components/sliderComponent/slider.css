@@ -1,0 +1,13 @@
+.slider{
+    position: relative;
+    display: flex;
+    overflow-x: scroll;
+    width: 100%;
+    border-style: none;
+}
+.slide-item{
+    display: inline-block;
+    border-style: none;
+    min-width: 150px;
+    margin-left: 20px;
+}
