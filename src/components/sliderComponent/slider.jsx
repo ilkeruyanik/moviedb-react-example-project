@@ -178,12 +178,10 @@ export default class Slider extends Component {
         ];
 
         const moviesItem = movies.map((movie) => 
-            <div key={movie.id} class='slide-item'>
+            <div key={movie.id} className='slide-item'>
                 <Movie movie_data={movie}/>
             </div>
         );
-        
-        console.log(moviesItem)
 
         return (
             <div className='slider'>
