@@ -9,7 +9,7 @@ const getStreamingMovie = async () => {
     const params = {
         api_key: apikey,
         language: language,
-        page: 1
+        page: Math.floor(Math.random() * 10)+1
     };
     const response = await axios.get(requestUrl, {params: params});
     return response;
@@ -20,7 +20,7 @@ const getPopularTv = async () => {
     const params = {
         api_key: apikey,
         language: language,
-        page: 1
+        page: Math.floor(Math.random() * 10)+1
     };
     const response = await axios.get(requestUrl, {params: params});
     return response;
@@ -31,7 +31,7 @@ const getPopularMovie = async () => {
     const params = {
         api_key: apikey,
         language: language,
-        page: 1
+        page: Math.floor(Math.random() * 10)+1
     };
     const response = await axios.get(requestUrl, {params: params});
     return response;
@@ -41,7 +41,8 @@ const getTrends = async (type) => {
     const requestUrl = url+'trending/all/'+type
     const params = {
         api_key: apikey,
-        language: language
+        language: language,
+        page: Math.floor(Math.random() * 10)+1
     };
     const response = await axios.get(requestUrl, {params: params});
     return response

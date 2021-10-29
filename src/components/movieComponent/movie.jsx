@@ -1,6 +1,7 @@
-import Poster from '../posterComponent/poster';
+import React, { Suspense } from 'react';
 import Score from '../scoreComponent/score';
 import './movie.css'
+const Poster = React.lazy(() => import('../posterComponent/poster'));
 
 export default function Movie(props){
 
@@ -18,7 +19,9 @@ export default function Movie(props){
 
     return (
         <div className='movie'>
-            <Poster poster_path={movie_data.poster_path} title={movie_data.title}/>
+            <Suspense fallback={<div>yükleniyor...</div>}>
+                <Poster poster_path={movie_data.poster_path} title={movie_data.title}/>
+            </Suspense>
             <div className='content'>
                 <div className='score'>
                     <Score value={movie_data.vote_average*10}/>
