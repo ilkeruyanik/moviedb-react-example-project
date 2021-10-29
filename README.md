@@ -5,6 +5,15 @@ It is an example project for Reactjs development.
 
 ## Installation
 
+After then clone project, you have to create .env file on root of project. You can copy .env.example.
+```bash
+cp .env.example .env
+```
+You should add your The Movie Database API KEY
+```
+API_KEY='<<YOUR-API-KEY>>'
+```
+
 Use docker
 
 ```bash
