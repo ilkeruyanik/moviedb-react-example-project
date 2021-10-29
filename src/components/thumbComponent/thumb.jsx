@@ -31,7 +31,7 @@ export default class Thumb extends Component {
                 return (
                     <div>
                         <span onClick={this.handleThumbUp} className='thumb-btn'>
-                            <i className="bi bi-hand-thumbs-up-fill"></i>
+                            <i className="bi bi-hand-thumbs-up-fill"/>
                         </span>
                     </div>
                 );
@@ -39,7 +39,7 @@ export default class Thumb extends Component {
                 return (
                     <div>
                         <span onClick={this.handleThumbDown} className='thumb-btn'>
-                            <i className="bi bi-hand-thumbs-down-fill"></i>
+                            <i className="bi bi-hand-thumbs-down-fill"/>
                         </span>
                     </div>
                 );
@@ -49,10 +49,10 @@ export default class Thumb extends Component {
             return (
                 <div>
                     <span onClick={this.handleThumbUp} className='thumb-btn'>
-                        <i className="bi bi-hand-thumbs-up"></i>
+                        <i className="bi bi-hand-thumbs-up"/>
                     </span>
                     <span onClick={this.handleThumbDown} className='thumb-btn'>
-                        <i className="bi bi-hand-thumbs-down"></i>
+                        <i className="bi bi-hand-thumbs-down"/>
                     </span>
                 </div>
             );

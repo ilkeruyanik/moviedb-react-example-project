@@ -30,7 +30,7 @@ export default class MobileTab extends Component {
             if (item.uri===this.props.activeTab){
                 return (
                     <div onClick={()=>this.toggleMenu()} className='menu-item menu-item-mobile active' key={index} uri={item.uri}>
-                        <span>{item.name}<i className="bi bi-caret-down"></i></span>
+                        <span>{item.name}<i className="bi bi-caret-down"/></span>
                     </div>
                     );
             }else{

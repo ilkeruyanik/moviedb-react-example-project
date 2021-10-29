@@ -11,6 +11,9 @@ export default function Score(props){
     if (props.value >= 70){
         trackColor = '#204529';
         barColor = '#21d07a';
+    }else if(props<=40){
+        trackColor = '#620031';
+        barColor = '#F4004F';
     }
 
     return (
