@@ -3,71 +3,41 @@ import Slider from '../sliderComponent/slider';
 import Tab from '../tabComponent/tab';
 import './movieList.css';
 
-import {getStreamingMovie, getTrends, getPopularTv, getPopularMovie} from '../../services/httpService';
+import { getRequest } from '../../services/httpService';
 
 export default class MovieList extends Component {
 
     constructor(props){
         super(props);
         this.state = {
-            type: this.props.menu_items[0].type,
+            uri: this.props.menu_items[0].uri,
             movies: []
         };
     }
 
     componentDidMount(){
-        this.getMovieData(this.state.type);
+        this.getMovieData(this.state.uri);
         
     }
 
-    getMovieData = (type) => {
-        if(type==='now_playing'){
-            getStreamingMovie().then((response) => {
-                this.setState({
-                    type: type,
-                    movies: response.data.results
-                });    
+    getMovieData = (uri) => {
+
+        getRequest(uri).then((response) => {
+            this.setState({
+                uri: uri,
+                movies: response.data.results
             });
-        }else if(type==='tv'){
-            getPopularTv().then((response) => {
-                this.setState({
-                    type: type,
-                    movies: response.data.results
-                });
-            });
-        }else if(type==='movie'){
-            getPopularMovie().then((response) => {
-                this.setState({
-                    type: type,
-                    movies: response.data.results
-                });
-            });
-        }else if(type==='day'){
-            getTrends('day').then((response) => {
-                this.setState({
-                    type: type,
-                    movies: response.data.results
-                }); 
-            });
-            
-        }else if(type==='week'){
-            getTrends('week').then((response) => {
-                this.setState({
-                    type: type,
-                    movies: response.data.results
-                });
-            });
-        }
+        });
     }
 
-    handleTab = (type) => {
-        this.getMovieData(type);
+    handleTab = (uri) => {
+        this.getMovieData(uri);
     }
 
     render() {
         return (
             <div>
-                <Tab handleTab={this.handleTab} activeTab={this.state.type} menu_items={this.props.menu_items} name={this.props.name}/>
+                <Tab handleTab={this.handleTab} activeTab={this.state.uri} menu_items={this.props.menu_items} name={this.props.name}/>
                 <div className='slider-container'>
                     <Slider movies={this.state.movies}/>
                 </div>

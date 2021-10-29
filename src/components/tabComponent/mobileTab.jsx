@@ -16,26 +16,26 @@ export default class MobileTab extends Component {
         });
     }
 
-    handleMenu = (type) => {
+    handleMenu = (uri) => {
         this.setState({
             open: false
        });
-       this.props.handleMenu(type);
+       this.props.handleMenu(uri);
     }
 
     render() {
 
         const menuItems = this.props.menuItems;
         const menu = menuItems.map((item, index) => {
-            if (item.type===this.props.activeTab){
+            if (item.uri===this.props.activeTab){
                 return (
-                    <div onClick={()=>this.toggleMenu()} className='menu-item menu-item-mobile active' key={index} type={item.type}>
+                    <div onClick={()=>this.toggleMenu()} className='menu-item menu-item-mobile active' key={index} uri={item.uri}>
                         <span>{item.name}<i className="bi bi-caret-down"></i></span>
                     </div>
                     );
             }else{
                 return (
-                    <div onClick={()=>this.handleMenu(item.type)} className='menu-item menu-item-mobile' key={index} type={item.type}>
+                    <div onClick={()=>this.handleMenu(item.uri)} className='menu-item menu-item-mobile' key={index} uri={item.uri}>
                         <span>{item.name}</span>
                     </div>
                     );

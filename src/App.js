@@ -3,37 +3,47 @@ import MovieList from './components/movieListComponent/movieList';
 
 function App() {
 
-  const popular_movies_menu_items = [{
-    name: 'Yayın Akışı',
-    type: 'now_playing'
-  },
-  {
-    name: 'Televizyonda',
-    type: 'tv'
-  },
-  {
-    name: 'Filmler',
-    type: 'movie'
-  }];
-
-  const trends_movies_menu_item = [{
-      name: 'Bugün',
-      type: 'day'
+  const menus = [
+    {
+      name: 'Popüler Olanlar',
+      menuItems: [{
+        name: 'Yayın Akışı',
+        uri: 'movie/now_playing'
+      },
+      {
+        name: 'Televizyonda',
+        uri: 'tv/popular'
+      },
+      {
+        name: 'Filmler',
+        uri: 'movie/popular'
+      }]
     },
     {
-      name: 'Bu hafta',
-      type: 'week'
-    }];
+      name: 'Trend',
+      menuItems: [{
+        name: 'Bugün',
+        uri: 'trending/all/day'
+      },
+      {
+        name: 'Bu hafta',
+        uri: 'trending/all/week'
+      }]
+    }
+  ];
+
+  const list = menus.map((item, index) => {
+      return (
+        <div key={index} className='movie-list-container'>
+          <MovieList menu_items={item.menuItems} name={item.name}/>
+        </div>
+      );
+  });
 
 
   return (
     <div className='container'>
-      <div className='movie-list-container'>
-        <MovieList menu_items={popular_movies_menu_items} name='Popüler Olanlar'/>
-      </div>
-      <div className='movie-list-container'>
-        <MovieList menu_items={trends_movies_menu_item} name='Trend'/>
-      </div>
+      {list}
     </div>
   );
 }

@@ -4,18 +4,18 @@ import './tab.css'
 
 export default class Tab extends Component {
 
-    handleMenu = (type) => {
-        this.props.handleTab(type);
+    handleMenu = (uri) => {
+        this.props.handleTab(uri);
     }
 
     render() {
 
         const menu_items = this.props.menu_items;
         const menu = menu_items.map((item, index) => {
-            if (item.type===this.props.activeTab){
-                return <div onClick={()=>this.handleMenu(item.type)} className='menu-item active' key={index} type={item.type}><span>{item.name}</span></div>
+            if (item.uri===this.props.activeTab){
+                return <div onClick={()=>this.handleMenu(item.uri)} className='menu-item active' key={index} uri={item.uri}><span>{item.name}</span></div>
             }else{
-                return <div onClick={()=>this.handleMenu(item.type)} className='menu-item' key={index} type={item.type}><span>{item.name}</span></div>
+                return <div onClick={()=>this.handleMenu(item.uri)} className='menu-item' key={index} uri={item.uri}><span>{item.name}</span></div>
             }
             
         });
