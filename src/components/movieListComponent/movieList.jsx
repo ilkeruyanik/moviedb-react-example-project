@@ -3,7 +3,7 @@ import Slider from '../sliderComponent/slider';
 import Tab from '../tabComponent/tab';
 import './movieList.css';
 
-import {getStreamingMovie, getTrends} from '../../services/httpService';
+import {getStreamingMovie, getTrends, getPopularTv, getPopularMovie} from '../../services/httpService';
 
 export default class MovieList extends Component {
 
@@ -24,34 +24,50 @@ export default class MovieList extends Component {
         if(type==='now_playing'){
             getStreamingMovie().then((response) => {
                 this.setState({
-                    ...this.state,
+                    type: type,
+                    movies: response.data.results
+                });    
+            });
+        }else if(type==='tv'){
+            getPopularTv().then((response) => {
+                this.setState({
+                    type: type,
                     movies: response.data.results
                 });
-                
+            });
+        }else if(type==='movie'){
+            getPopularMovie().then((response) => {
+                this.setState({
+                    type: type,
+                    movies: response.data.results
+                });
             });
         }else if(type==='day'){
             getTrends('day').then((response) => {
                 this.setState({
-                ...this.state,
-                movies: response.data.results
-            });
-                console.log(this.state);
+                    type: type,
+                    movies: response.data.results
+                }); 
             });
             
         }else if(type==='week'){
             getTrends('week').then((response) => {
                 this.setState({
-                    ...this.state,
+                    type: type,
                     movies: response.data.results
                 });
             });
         }
     }
 
+    handleTab = (type) => {
+        this.getMovieData(type);
+    }
+
     render() {
         return (
             <div>
-                <Tab menu_items={this.props.menu_items} name={this.props.name}/>
+                <Tab handleTab={this.handleTab} activeTab={this.state.type} menu_items={this.props.menu_items} name={this.props.name}/>
                 <div className='slider-container'>
                     <Slider movies={this.state.movies}/>
                 </div>
