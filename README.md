@@ -1,7 +1,7 @@
 # Moviedb React Example Project
 ## Description
 
-It is an example project for Reactjs development. In this project.
+It is an example project for Reactjs development.
 
 ## Installation
 
