@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import MobileTab from './mobileTab';
 import './tab.css'
 
 export default class Tab extends Component {
@@ -19,6 +20,14 @@ export default class Tab extends Component {
             
         });
 
+        const width = window.innerWidth;
+
+        if(width<1000){
+            return (
+                <MobileTab name={this.props.name} menuItems={menu_items} activeTab={this.props.activeTab} handleMenu={this.handleMenu}/>
+            );
+        }
+
         return (
             <div className='tab'>
                 <div className='tab-name'>
@@ -28,6 +37,6 @@ export default class Tab extends Component {
                     {menu}
                 </div>
             </div>
-        )
+        );
     }
 }

@@ -11,6 +11,7 @@
     display: flex;
     border: 1px solid #000;
     width: fit-content;
+    height: fit-content;
     border-radius: 30px;
 }
 .menu-item{
@@ -24,8 +25,29 @@
     text-align: center;
     justify-content: center;
 }
-
 .menu-item.active{
     background-color: #002042;
     color: #79e2b8;
+    display: inline-block;
+}
+.menu-container{
+    position: relative;
+}
+.menu-mobile{
+    display: block;
+    border: 0;
+    background-color: #79e2b8;
+    max-width: auto;
+    position: absolute;
+    z-index: 1000;
+    border-radius: 15px;
+}
+.menu-item-mobile{
+    display: none;
+}
+.menu-item-mobile.active{
+    display: inline-block;
+}
+.menu-mobile.open .menu-item-mobile{
+    display: block;
 }
