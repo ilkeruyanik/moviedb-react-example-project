@@ -1,11 +1,9 @@
 import axios from "axios";
+import env from "react-dotenv";
 
-const url = 'https://api.themoviedb.org/3/';
-const apikey = 'fbe256cf90fcadaa7dce241db14ae31c';
-const language= 'tr-TR';
-
+const url = env.URL;
 const params = {
-    api_key: 'fbe256cf90fcadaa7dce241db14ae31c',
+    api_key: env.API_KEY,
     language: 'tr-TR',
     page: 1
 }
