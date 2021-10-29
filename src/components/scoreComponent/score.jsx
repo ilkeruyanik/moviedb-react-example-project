@@ -1,4 +1,6 @@
 import './score.css'
+import { CircularProgressbar, buildStyles } from 'react-circular-progressbar';
+import 'react-circular-progressbar/dist/styles.css';
 
 export default function Score(props){
 
@@ -12,17 +14,15 @@ export default function Score(props){
     }
 
     return (
-    <div className='ring'>
-        <div className='outer_ring' style={{borderColor:barColor}} >
-            <div className='inner_ring' >
-                <div className='percent'>
-                    <span>{props.value}<sup>%</sup></span>
-                </div>
+        <div className='ring'>
+            <CircularProgressbar value={props.value} text={props.value+'%'} background={true}
+                styles={buildStyles({
+                    textSize: '32px',
+                    pathColor: barColor,
+                    textColor: '#fff',
+                    trailColor: trackColor,
+                    backgroundColor: '#000',
+                })}/>
             </div>
-        </div>
-    </div>
     );
-
-
-    
 }
