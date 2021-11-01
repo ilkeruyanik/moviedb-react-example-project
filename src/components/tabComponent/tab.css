@@ -6,6 +6,7 @@
     font-size: 1.5em;
     margin-right: 20px;
     margin-left: 20px;
+    font-size: bolder;
 }
 .menu{
     display: flex;
@@ -45,9 +46,24 @@
 .menu-item-mobile{
     display: none;
 }
+.menu-item-mobile span{
+    padding: 8px 15px;
+}
 .menu-item-mobile.active{
     display: inline-block;
 }
 .menu-mobile.open .menu-item-mobile{
     display: block;
+}
+@media only screen and (max-width: 400px) {
+    .tab-name{
+        margin-right: 10px;
+    }
+}
+@media only screen and (max-width: 300px) {
+    .tab-name{
+        font-size: 1.2em;
+        max-width: 100px;
+        margin-right: 5px;
+    }
 }
