@@ -1,65 +1,34 @@
-import React, { Component } from 'react';
+import React, { useState } from 'react';
 import './thumb.css';
 
-export default class Thumb extends Component {
+export default function Thumb(){
 
-    constructor(props){
-        super(props);
-        this.state = {
-            thumbUp: false,
-            thumbDown: false
-        }
+    const [thumbUp, setthumbUp] = useState(false);
+    const [thumbDown, setthumbDown] = useState(false);
+
+    let thumbUpStyle = {display: 'inline-block'};
+    let thumbDownStyle = {display: 'inline-block'};
+    let thumbUpIcon = 'bi bi-hand-thumbs-up';
+    let thumbDownIcon = 'bi bi-hand-thumbs-down';
+
+    if(thumbUp){
+        thumbUpIcon = 'bi bi-hand-thumbs-up-fill';
+        thumbDownStyle = {display: 'none'};
     }
 
-    handleThumbUp = () => {
-        this.setState({
-            thumbUp: !this.state.thumbUp,
-            thumbDown: this.state.thumbDown
-        });
+    if(thumbDown){
+        thumbDownIcon = 'bi bi-hand-thumbs-down-fill';
+        thumbUpStyle = {display: 'none'};
     }
 
-    handleThumbDown = () => {
-        this.setState({
-            thumbUp: this.state.thumbUp,
-            thumbDown: !this.state.thumbDown
-        });
-    }
-
-    createThumbButtons = () => {
-        if(this.state.thumbUp || this.state.thumbDown){
-            if(this.state.thumbUp){
-                return (
-                    <div>
-                        <span onClick={this.handleThumbUp} className='thumb-btn'>
-                            <i className="bi bi-hand-thumbs-up-fill"/>
-                        </span>
-                    </div>
-                );
-            }else{
-                return (
-                    <div>
-                        <span onClick={this.handleThumbDown} className='thumb-btn'>
-                            <i className="bi bi-hand-thumbs-down-fill"/>
-                        </span>
-                    </div>
-                );
-            }
-            
-        }else{
-            return (
-                <div>
-                    <span onClick={this.handleThumbUp} className='thumb-btn'>
-                        <i className="bi bi-hand-thumbs-up"/>
-                    </span>
-                    <span onClick={this.handleThumbDown} className='thumb-btn'>
-                        <i className="bi bi-hand-thumbs-down"/>
-                    </span>
-                </div>
-            );
-        }
-    }
-
-    render() {
-        return this.createThumbButtons();
-    }
+    return (
+        <div>
+            <span onClick={()=>{setthumbUp(!thumbUp)}} className='thumb-btn' style={thumbUpStyle}>
+                <i className={thumbUpIcon}/>
+            </span>
+            <span onClick={()=>{setthumbDown(!thumbDown)}} className='thumb-btn' style={thumbDownStyle}>
+                <i className={thumbDownIcon}/>
+            </span>
+        </div>
+    );
 }
