@@ -10,7 +10,7 @@ const params = {
 
 const getRequest = async (uri) => {
     const requestUrl = url+uri;
-    return await axios.get(requestUrl, {params: params});
+    return axios.get(requestUrl, {params: params});
 }
 
 export {getRequest};
